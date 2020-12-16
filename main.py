@@ -1,11 +1,16 @@
 
-letras=("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
-palabra="el rio esta frio y con un pez"
+letras=("a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z")
+print("frase:")
+palabra=input()
+print("clave:")
+clave=input()
 
 
+#[1,2,3,4,5,6,7,8,9,10]
+#[0,1,2,3,4,5,6,7,8,9]
 def control(indice,largo):
     if indice >len(largo)-1:
-        return indice-len(largo)-1
+        return indice-len(largo)
     else:
         return indice
 
@@ -31,11 +36,8 @@ def incriptaCesar(palabra,num):
     i=i+1
     
     print(resultado)
-   
+
 #incriptaCesar(palabra,20)
-
-
-clave="secreto"
 
 def incriptacionvigenere(palabra,clave):
     resultado=""
@@ -47,24 +49,23 @@ def incriptacionvigenere(palabra,clave):
         if palabra[i]==" ":
             resultado=resultado+" "
             caracter=" "
-        else:
-            indice=letras.index(palabra[i])       
+        else:   
+            if j==len(clave):
+                j=0
             try:  
-                indice = control((indice+letras.index(clave[j])),letras)
+                indice=letras.index(palabra[i])
+                indice = control(indice+letras.index(clave[j]),letras)
                 caracter=letras[indice]
                 resultado = resultado + caracter
             except:
                 indice=letras.index(palabra[i].lower())
-                indice= control((indice+letras.index(clave[j])),letras)
-                caracter= letras[indice].upper()
-                resultado= resultado + caracter
-                letras[indice].lower()        
+                indice= control(indice+letras.index(clave[j]),letras)
+                caracter= letras[indice]
+                resultado= resultado + caracter.upper()
+                      
         i=i+1
-        if j>len(clave)-2:
-            j=0
-        else:
-            if indice<len(letras)-2 and caracter!=" ":
-                j=j+1
+        if caracter !=" ":
+            j=j+1
             
     print(resultado)
 
@@ -75,3 +76,4 @@ incriptacionvigenere(palabra,clave)
 #letras.index(clave[control(j,clave)])
 
 #wp tzs xgle himh m usp lr isr
+a=input()
